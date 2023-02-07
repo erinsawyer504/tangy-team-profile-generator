@@ -33,7 +33,7 @@ const addManager = () => {
         {
             type: 'input',
             name: 'officeNumber',
-            message: "Enter the manager's office number",
+            message: "Enter the manager's office number.",
         },
 
     ])
@@ -44,11 +44,70 @@ const addManager = () => {
         console.log(manager);
     })
 };
-addManager();
 
-// {
-//     type: 'list',
-//     name: 'role',
-//     message: "Please select employee's role",
-//     choices: []
-// },
+const addEmployee = () => {
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: "Please select the employee's role",
+            choices: ['Engineer', 'Intern'],
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: "Enter the employee's name.",
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Enter the employe's ID.",
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Enter the employe's email address.",
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "Enter the intern's current school",
+            when: (input) => input.role === "Intern",
+        },
+        {
+            type: 'input',
+            name: 'gitHub',
+            message: "Enter the employee's github username",
+            when: (input) => input.role === "Engineer",
+        },
+        {
+            type: 'confirm',
+            name: 'addMoreEmployees',
+            message: "Do you want to add more employees?",
+            default: false
+        }
+
+    ])
+    .then(employeeData => {
+        let {name, id, email, role, school, gitHub, addMoreEmployees} = employeeData;
+        let employee;
+    
+    //setting differnet class objects based on employee's role
+    if (role === "Intern") {
+        employee = new Intern(name, id, email, school);
+        console.log("intern: ", employee);
+    }
+    if (role === "Engineer") {
+        employee = new Engineer(name, id, email, gitHub);
+        console.log("engineer: ", employee);
+    }
+    wholeTeam.push(employee);
+    if(addMoreEmployees) {
+        return addEmployee(wholeTeam);
+    } else {
+        return wholeTeam;
+    }
+    })
+}
+addEmployee();
+
