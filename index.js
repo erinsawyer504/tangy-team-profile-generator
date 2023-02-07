@@ -108,6 +108,29 @@ const addEmployee = () => {
         return wholeTeam;
     }
     })
-}
-addEmployee();
+};
 
+//setting up function to generate HTML
+
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if(err){
+            console.log(err);
+            return;
+        }else {
+            console.log("The team profile has been successfully generated!");
+        }
+    })
+};
+
+addManager()
+    .then(addEmployee)
+    .then(wholeTeam => {
+        return generateHTML(wholeTeam);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+    })
