@@ -8,7 +8,6 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-//TODO: not a requirement but add validation to ensure that user input is in the proper format
 
 //setting array to take in the entire team
 const wholeTeam = [];
