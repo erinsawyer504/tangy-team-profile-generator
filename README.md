@@ -6,7 +6,7 @@ This project takes a user's input on their team and turns it into a profile of t
 ## Links
 - [Sample HTML](https://github.com/erinsawyer504/team-profile-generator/blob/main/dist/index.html)
 - [github repo](https://github.com/erinsawyer504/team-profile-generator)
-- [Video Demo](need to add)
+- [Video Demo](https://drive.google.com/file/d/1x1DT4_B1b5bDiA63j8ZvsHd7A71DtHyn/view)
 
 ## Table of Contents
 - [Installation](#installation)  
